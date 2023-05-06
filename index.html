@@ -11,19 +11,34 @@
   <body>
     <h1>UTM 좌표 정확도 분석</h1>
     <label>🚩기준좌표 <input type="text" id="pivotCod" placeholder="ex) DH 12345 67890" class="marginBottom10"></label>
-    <label><br>📌입력좌표 <input type="text" id="inputCod" placeholder="ex) DH 12345 67890" class="marginBottom10"></label>
+    <label><br>📌입력좌표 <input type="text" id="inputCod" class="marginBottom10"></label>
     <input type="button" value="Go" onclick="analysis()" class="marginBottom10">
-    <label><br>✅차이(m) <input type="text" id="outputCod" readonly></label>
+    <label><br>✅차이(m) <input type="text" id="output" readonly></label>
     
     <div id="container">
     </div>
     <script>
+    	function getEast(s) {
+      
+      }
+      
+      function getNorth(s) {
+      
+      }
+      
+      
       function analysis() {
-      	let pivotCod = document.getElementById("pivotCod").valuea;
+      	let pivotCod = document.getElementById("pivotCod").value;
         let inputCod = document.getElementById("inputCod").value;
+        // 공백 제거
         pivotCod = pivotCod.split(' ').join('');
         inputCod = inputCod.split(' ').join('');
-        console.log(pivotCod, inputCod);
+        // 좌표 거리 구하기
+        let deltaEast = getEast(pivotCod) - getEast(inputCod);
+        let deltaNorth = getNorth(pivotCod) - getNorth(inputCod);
+        let answer = Math.sqrt((deltaEast*deltaEast) + (deltaNorth*deltaNorth));
+        
+        document.getElementById("output").value = answer;
       }
     </script>
   </body>
