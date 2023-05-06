@@ -10,15 +10,20 @@
   </head>
   <body>
     <h1>UTM 좌표 정확도 분석</h1>
-    <label>🚩기준좌표<br><input type="text" id="pivotCod" class="marginBottom10"></label>
-    <label><br>📌입력좌표<br><input type="text" id="inputCod" class="marginBottom10"></label>
-    <br><input type="button" value="입력" onclick="analysis()" class="marginBottom10">
+    <label>🚩기준좌표 <input type="text" id="pivotCod" placeholder="ex) DH 12345 67890" class="marginBottom10"></label>
+    <label><br>📌입력좌표 <input type="text" id="inputCod" placeholder="ex) DH 12345 67890" class="marginBottom10"></label>
+    <input type="button" value="Go" onclick="analysis()" class="marginBottom10">
+    <label><br>✅차이(m) <input type="text" id="outputCod" readonly></label>
     
     <div id="container">
     </div>
     <script>
       function analysis() {
-      	console.log("eee");
+      	let pivotCod = document.getElementById("pivotCod").valuea;
+        let inputCod = document.getElementById("inputCod").value;
+        pivotCod = pivotCod.split(' ').join('');
+        inputCod = inputCod.split(' ').join('');
+        console.log(pivotCod, inputCod);
       }
     </script>
   </body>
