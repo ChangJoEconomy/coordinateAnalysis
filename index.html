@@ -1,21 +1,36 @@
 <html>
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
     <title>좌표간 정확도</title>
     <style>
       .marginBottom10 {
         margin-bottom: 10px;
       }
+      
+      h1 {
+        font-size: 40px;
+      }
+      @media ( min-width: 768px ) {
+        h1 {
+          font-size: 30px;
+        }
+      }
+      @media ( min-width: 1024px ) {
+        h1 {
+          font-size: 20px;
+        }
+      }
     </style>
   </head>
   <body>
-    <h1>UTM 좌표 정확도 분석</h1>
+    <h1>좌표 정확도 분석</h1>
     <label>🚩기준좌표 <input type="text" id="pivotCod" placeholder="ex) DH 12345 67890" class="marginBottom10"></label>
-    <label><br>📌입력좌표 <input type="text" id="inputCod" class="marginBottom10"></label>
+    <label><br>🌠입력좌표 <input type="text" id="inputCod" class="marginBottom10"></label>
     <input type="button" value="Go" onclick="analysis()" class="marginBottom10">
-    <label><br>✅차이(m) <input type="text" id="output" readonly></label>
+    <p>결과값</p>
     
     <div id="container">
+      
     </div>
     <script>
     	function getEast(s) {
