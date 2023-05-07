@@ -5,8 +5,10 @@
 */
 
 // 기존 입력한 값 불러오기
-document.getElementById('pivotCoordinate').value = localStorage.getItem('pivotCoStrg');
-document.getElementById('inputCoordinates').value = localStorage.getItem('inputCoStrg');
+if(!!window.openDatabase) {
+	document.getElementById('pivotCoordinate').value = localStorage.getItem('pivotCoStrg');
+	document.getElementById('inputCoordinates').value = localStorage.getItem('inputCoStrg');
+}
 
 (function() {
 
@@ -139,8 +141,10 @@ document.getElementById('inputCoordinates').value = localStorage.getItem('inputC
 				};
 
 			document.getElementById("gogo").onclick = function () {
-				localStorage.setItem("pivotCoStrg", document.getElementById('pivotCoordinate').value);
-				localStorage.setItem("inputCoStrg", document.getElementById('inputCoordinates').value);
+				if(!!window.openDatabase) {
+					localStorage.setItem("pivotCoStrg", document.getElementById('pivotCoordinate').value);
+					localStorage.setItem("inputCoStrg", document.getElementById('inputCoordinates').value);
+				}
 				
 				//$message._show('success', '분석 완료');
 				$message._show('failure', '아직 기능 구현 안함');
