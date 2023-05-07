@@ -4,6 +4,10 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+// 기존 입력한 값 불러오기
+document.getElementById('pivotCoordinate').value = localStorage.getItem('pivotCoStrg');
+document.getElementById('inputCoordinates').value = localStorage.getItem('inputCoStrg');
+
 (function() {
 
 	"use strict";
@@ -134,37 +138,13 @@
 					$message.classList.remove('visible');
 				};
 
-			// Events.
-			// Note: If you're *not* using AJAX, get rid of this event listener.
-				$form.addEventListener('submit', function(event) {
-
-					event.stopPropagation();
-					event.preventDefault();
-
-					// Hide message.
-						$message._hide();
-
-					// Disable submit.
-						$submit.disabled = true;
-
-					// Process form.
-					// Note: Doesn't actually do anything yet (other than report back with a "thank you"),
-					// but there's enough here to piece together a working AJAX submission call that does.
-						window.setTimeout(function() {
-
-							// Reset form.
-								$form.reset();
-
-							// Enable submit.
-								$submit.disabled = false;
-
-							// Show message.
-								//$message._show('success', '분석 완료');
-								$message._show('failure', '아직 기능 구현 안함');
-
-						}, 750);
-
-				});
+			document.getElementById("gogo").onclick = function () {
+				localStorage.setItem("pivotCoStrg", document.getElementById('pivotCoordinate').value);
+				localStorage.setItem("inputCoStrg", document.getElementById('inputCoordinates').value);
+				
+				//$message._show('success', '분석 완료');
+				$message._show('failure', '아직 기능 구현 안함');
+			};
 
 		})();
 
