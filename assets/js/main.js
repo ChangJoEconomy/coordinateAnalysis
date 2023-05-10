@@ -10,6 +10,30 @@ if(!!window.openDatabase) {
 	document.getElementById('inputCoordinates').value = localStorage.getItem('inputCoStrg');
 }
 
+var checkEng = /[a-zA-Z]/;
+var checkNum = /[0-9]/;
+
+function chkUTMCoordinate(coordinate) {
+	if(coordinate.length!=12) return false;
+	for(let j=0; j<2; ++j) {
+		if(!checkEng.test(coordinate[j])) return false;
+	}
+	for(let j=2; j<12; ++j) {
+		if(!checkNum.test(coordinate[j])) return false;	
+	}
+	return true;
+}
+
+function changeUtmUnitEast(coordinate) {
+	// charCodeAt -> 해당 index 문자의 아스키코드값
+	// substr -> 5개 부분만 잘라서 뒤에 더함
+	return parseInt((coordinate.charCodeAt([0])-64) + coordinate.substr(2, 5));	
+}
+
+function changeUtmUnitNorth(coordinate) {
+	return parseInt((coordinate.charCodeAt([1])-30) + coordinate.substr(7, 5));	
+}
+
 (function() {
 
 	"use strict";
@@ -140,14 +164,37 @@ if(!!window.openDatabase) {
 					$message.classList.remove('visible');
 				};
 
-			document.getElementById("gogo").onclick = function () {
+				document.getElementById("gogo").onclick = function () {
+				
+				let pivotCo = document.getElementById('pivotCoordinate').value;
+				let inputCo = document.getElementById('inputCoordinates').value;
+				pivotCo = pivotCo.split(' ').join('');
+				inputCo = inputCo.split(' ').join('');
+				
 				if(!!window.openDatabase) {
-					localStorage.setItem("pivotCoStrg", document.getElementById('pivotCoordinate').value);
-					localStorage.setItem("inputCoStrg", document.getElementById('inputCoordinates').value);
+					localStorage.setItem("pivotCoStrg", pivotCo);
+					localStorage.setItem("inputCoStrg", inputCo);
 				}
 				
-				//$message._show('success', '분석 완료');
-				$message._show('failure', '아직 기능 구현 안함');
+				if(!chkUTMCoordinate(pivotCo)) {
+					$message._show('failure', '기준좌표 확인!');
+					return;
+				}
+				
+				if(!chkUTMCoordinate(inputCo)) {
+					$message._show('failure', '기준좌표 확인!');
+					return;
+				}
+				
+				pivotCo = pivotCo.toUpperCase();
+				inputCo = inputCo.toUpperCase();
+				
+				let tmpDx = changeUtmUnitEast(pivotCo) - changeUtmUnitEast(inputCo);
+				let tmpDy = changeUtmUnitNorth(pivotCo) - changeUtmUnitNorth(inputCo);
+				let errorValue = Math.round(Math.sqrt(tmpDx*tmpDx + tmpDy*tmpDy));
+				
+				document.getElementById("outputValue").innerText = errorValue;
+				$message._show('success', '완료');
 			};
 
 		})();
