@@ -168,13 +168,13 @@ function changeUtmUnitNorth(coordinate) {
 				
 				let pivotCo = document.getElementById('pivotCoordinate').value;
 				let inputCo = document.getElementById('inputCoordinates').value;
-				pivotCo = pivotCo.split(' ').join('');
-				inputCo = inputCo.split(' ').join('');
 				
 				if(!!window.openDatabase) {
 					localStorage.setItem("pivotCoStrg", pivotCo);
 					localStorage.setItem("inputCoStrg", inputCo);
 				}
+				pivotCo = pivotCo.split(' ').join('');
+				inputCo = inputCo.split(' ').join('');
 				
 				if(!chkUTMCoordinate(pivotCo)) {
 					$message._show('failure', '기준좌표 확인!');
