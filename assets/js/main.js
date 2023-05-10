@@ -182,7 +182,7 @@ function changeUtmUnitNorth(coordinate) {
 				}
 				
 				if(!chkUTMCoordinate(inputCo)) {
-					$message._show('failure', '기준좌표 확인!');
+					$message._show('failure', '입력좌표 확인!');
 					return;
 				}
 				
