@@ -149,10 +149,8 @@ function changeUtmUnitNorth(coordinate) {
 					$form.appendChild($message);
 
 				$message._show = function(type, text) {
-
 					$message.innerHTML = text;
-					$message.classList.add(type);
-					$message.classList.add('visible');
+                                        $message.className = 'message ' + type + ' visible';
 
 					window.setTimeout(function() {
 						$message._hide();
