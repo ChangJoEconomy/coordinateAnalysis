@@ -5,6 +5,7 @@
 */
  
 
+
 // 기존 입력한 값 불러오기
 if(!!window.openDatabase) {
 	document.getElementById('pivotCoordinate').value = localStorage.getItem('pivotCoStrg');
