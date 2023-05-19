@@ -4,7 +4,7 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 // geodesy 라이브러리 로드
-var mgrs = require('geodesy').mgrs;
+import Mgrs, { LatLon } from './geodesy/mgrs.js';
 
 function convertMGRSToLatLng(mgrs) {
   var latlon = LatLon.parseMGRS(mgrs);
