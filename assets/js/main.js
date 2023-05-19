@@ -3,8 +3,6 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
-
-import * as geodesy from 'https://esm.run/geodesy';
 // geodesy 라이브러리 로드
 var LatLon = require('geodesy').LatLon;
 
