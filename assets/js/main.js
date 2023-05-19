@@ -191,6 +191,11 @@ function changeUtmUnitNorth(coordinate) {
 				let tmpDy = changeUtmUnitNorth(pivotCo) - changeUtmUnitNorth(inputCo);
 				let errorValue = Math.round(Math.sqrt(tmpDx*tmpDx + tmpDy*tmpDy));
 				
+				var map = new naver.maps.Map('map', {
+                                    center: new naver.maps.LatLng(37.3595704, 127.105399),
+                                    zoom: 10
+                                });
+					
 				var marker = new naver.maps.Marker({
                                     position: new naver.maps.LatLng(37.3595704, 127.105399),
                                     map: map
