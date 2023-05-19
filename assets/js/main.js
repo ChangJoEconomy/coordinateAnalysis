@@ -192,7 +192,7 @@ function changeUtmUnitNorth(coordinate) {
 				let errorValue = Math.round(Math.sqrt(tmpDx*tmpDx + tmpDy*tmpDy));
 				
 				document.getElementById("outputValue").innerText = errorValue;
-				$message._show('success', '완료');
+				$message._show('success', '');
 			};
 
 		})();
