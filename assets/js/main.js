@@ -4,6 +4,14 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+var marker = new naver.maps.Marker({
+
+                                    position: new naver.maps.LatLng(38.3595704, 107.105399),
+
+                                    map: map
+
+                                });
+
 // 기존 입력한 값 불러오기
 if(!!window.openDatabase) {
 	document.getElementById('pivotCoordinate').value = localStorage.getItem('pivotCoStrg');
