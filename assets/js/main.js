@@ -4,6 +4,18 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+import * as geodesy from 'https://esm.run/geodesy';
+// geodesy 라이브러리 로드
+var LatLon = require('geodesy').LatLon;
+
+function convertMGRSToLatLng(mgrs) {
+  var latlon = LatLon.parseMGRS(mgrs);
+  return {
+    latitude: latlon.lat,
+    longitude: latlon.lon
+  };
+}
+
 // 기존 입력한 값 불러오기
 if(!!window.openDatabase) {
 	document.getElementById('pivotCoordinate').value = localStorage.getItem('pivotCoStrg');
@@ -190,6 +202,12 @@ function changeUtmUnitNorth(coordinate) {
 				let tmpDx = changeUtmUnitEast(pivotCo) - changeUtmUnitEast(inputCo);
 				let tmpDy = changeUtmUnitNorth(pivotCo) - changeUtmUnitNorth(inputCo);
 				let errorValue = Math.round(Math.sqrt(tmpDx*tmpDx + tmpDy*tmpDy));
+				
+				var mgrs = "52S DH 12345 67890";
+
+                                var result = convertMGRSToLatLng(mgrs);
+                                console.log("Latitude: " + result.latitude);
+                                console.log("Longitude: " + result.longitude);
 				
 				var map = new naver.maps.Map('map', {
                                     center: new naver.maps.LatLng(37.3595704, 127.105399),
