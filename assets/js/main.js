@@ -9,7 +9,7 @@ var utm = "+proj=utm +zone=52 +ellps=GRS80 +units=m +no_defs";
 var wgs84 = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs";
 var polyline;
 var marker;
-
+var markerOn = false;
 // 기존 입력한 값 불러오기
 if(!!window.openDatabase) {
 	document.getElementById('pivotCoordinate').value = localStorage.getItem('pivotCoStrg');
@@ -169,6 +169,10 @@ function changeUtmUnitNorth(coordinate) {
 				};
 
 				document.getElementById("gogo").onclick = function () {
+					if(markerOn) {
+						marker.setMap(null); // 삭제
+						polyline.setMap(null); //폴리라인 지우기
+					}
 				
 				let pivotCo = document.getElementById('pivotCoordinate').value;
 				let inputCo = document.getElementById('inputCoordinates').value;
@@ -223,6 +227,8 @@ function changeUtmUnitNorth(coordinate) {
                                     position: polylinePath[0], //마크 표시할 위치 배열의 마지막 위치
                                     map: map
                                 });
+				markerOn = true;
+				
 				
 				document.getElementById("outputValue").innerText = errorValue;
 				$message._show('success', '');
