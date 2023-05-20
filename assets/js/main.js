@@ -5,36 +5,10 @@
 */
 
 // UTM 좌표체계와 위도/경도 좌표체계 정의
-proj4.defs([
-  [
-    'EPSG:4326', // 위도/경도 좌표체계 (WGS84)
-    '+proj=longlat +datum=WGS84 +no_defs'
-  ],
-  [
-    'EPSG:5179', // 한국 2000 좌표체계
-    '+proj=tmerc +lat_0=38 +lon_0=127.5 +k=0.9996 +x_0=1000000 +y_0=2000000 +ellps=GRS80 +units=m +no_defs'
-  ]
-]);
+var utm = "+proj=utm +zone=52 +ellps=GRS80 +units=m +no_defs";
+var wgs84 = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs";
 
-function convertUTMToLatLng(easting, northing) {
-  var utmPoint = {
-    x: easting,
-    y: northing
-  };
-  var latLngPoint = proj4('EPSG:5179', 'EPSG:4326', utmPoint);
-
-  return {
-    latitude: latLngPoint.y,
-    longitude: latLngPoint.x
-  };
-}
-
-var easting = 412345;
-var northing = 4267890;
-
-var result = convertUTMToLatLng(easting, northing);
-console.log('Latitude: ' + result.latitude);
-console.log('Longitude: ' + result.longitude);
+console.log(proj4(utm, wgs84, [412345, 4267890]));
 
 
 // 기존 입력한 값 불러오기
