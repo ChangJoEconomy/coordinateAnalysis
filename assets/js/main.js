@@ -204,6 +204,7 @@ function changeUtmUnitNorth(coordinate) {
 				
 				if(markerOn){
 					marker.setPosition(new naver.maps.LatLng(inputWsg[1], inputWsg[0]));
+                                        marker.setMap(map)
 				}
 				else {
 				    var marker = new naver.maps.Marker({
