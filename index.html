@@ -49,10 +49,22 @@
                     var mapOptions = {
                         center: new naver.maps.LatLng(37.3595704, 127.105399),
                         zoom: 10
-			mapTypeControl : true
                     };
+		
+		var btns = $(".buttons > input");
+                    btns.on("click", function(e) {
+                        e.preventDefault();
 
-                    var map = new naver.maps.Map('map', mapOptions);
+                        var mapTypeId = this.id;
+
+                        if (map.getMapTypeId() !== naver.maps.MapTypeId[mapTypeId]) {
+                            map.setMapTypeId(naver.maps.MapTypeId[mapTypeId]); // 지도 유형 변경하기
+  
+                            btns.removeClass("control-on");
+                            $(this).addClass("control-on");
+                        }
+});
+                     var map = new naver.maps.Map('map', mapOptions);
                 </script>
 			<script src="assets/js/main.js"></script>
 
