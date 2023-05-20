@@ -211,8 +211,8 @@ function changeUtmUnitNorth(coordinate) {
                                 var polyline = new naver.maps.Polyline({
                                     path: polylinePath,      //선 위치 변수배열
                                     strokeColor: '#FF0000', //선 색 빨강 #빨강,초록,파랑
-                                    strokeOpacity: 0.8, //선 투명도 0 ~ 1
-                                    strokeWeight: 6,   //선 두께
+                                    strokeOpacity: 0.5, //선 투명도 0 ~ 1
+                                    strokeWeight: 4,   //선 두께
                                     map: map           //오버레이할 지도
                                 });
 
