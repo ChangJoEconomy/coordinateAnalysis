@@ -204,19 +204,17 @@ function changeUtmUnitNorth(coordinate) {
 				
 				map.setCenter(new naver.maps.LatLng(inputWsg[1], inputWsg[0])); // 맵 중심은 입력좌표로
 				
-				let polylinePath = [
+				var arrayOfCoords = [
                                     new naver.maps.LatLng(inputWsg[1], inputWsg[0]),
                                     new naver.maps.LatLng(inputWsg[1], inputWsg[0])
 				];
 					
 				//위의 배열을 이용해 라인 그리기
-                                var polyline = new naver.maps.Polyline({
-                                    path: polylinePath,      //선 위치 변수배열
-                                    strokeColor: '#FF0000', //선 색 빨강 #빨강,초록,파랑
-                                    strokeOpacity: 0.8, //선 투명도 0 ~ 1
-                                    strokeWeight: 6,   //선 두께
-                                    map: map           //오버레이할 지도
+                                var polyline = new naver.maps.Polyline({  
+                                    path: arrayOfCoords,
+                                    map: map
                                 });
+
 
                                 // 배열 마지막 위치를 마크로 표시함
                                 var marker = new naver.maps.Marker({
