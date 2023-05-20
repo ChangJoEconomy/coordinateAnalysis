@@ -199,12 +199,7 @@ function changeUtmUnitNorth(coordinate) {
 				let inputWsg = proj4(utm, wgs84, [changeUtmUnitEast(inputCo), changeUtmUnitNorth(inputCo)]);
 				console.log(inputWsg);
 				
-				var map = new naver.maps.Map('map', {
-                                    center: new naver.maps.LatLng(inputWsg[1], inputWsg[0]),
-                                    zoom: 10
-                                });
-				
-				map.setOptions("mapTypeControl", true); //지도 유형 컨트롤의 표시 여부
+				map.setCenter(new naver.maps.LatLng(inputWsg[1], inputWsg[0]));
 				var marker = new naver.maps.Marker({
                                     position: new naver.maps.LatLng(inputWsg[1], inputWsg[0]),
                                     map: map
