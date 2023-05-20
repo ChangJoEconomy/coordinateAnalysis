@@ -219,7 +219,7 @@ function changeUtmUnitNorth(coordinate) {
 
                                 // 배열 마지막 위치를 마크로 표시함
                                 var marker = new naver.maps.Marker({
-                                    position: polylinePath[polylinePath.length-1], //마크 표시할 위치 배열의 마지막 위치
+                                    position: polylinePath[0], //마크 표시할 위치 배열의 마지막 위치
                                     map: map
                                 });
 				
