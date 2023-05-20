@@ -7,7 +7,8 @@
 // UTM 좌표체계와 위도/경도 좌표체계 정의
 var utm = "+proj=utm +zone=52 +ellps=GRS80 +units=m +no_defs";
 var wgs84 = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs";
-
+var polyline;
+var marker;
 
 // 기존 입력한 값 불러오기
 if(!!window.openDatabase) {
@@ -202,13 +203,13 @@ function changeUtmUnitNorth(coordinate) {
 				
 				map.setCenter(new naver.maps.LatLng(inputWsg[1], inputWsg[0])); // 맵 중심은 입력좌표로
 				
-				var polylinePath = [
+				let polylinePath = [
                                     new naver.maps.LatLng(inputWsg[1], inputWsg[0]),
                                     new naver.maps.LatLng(pivotWsg[1], pivotWsg[0])
 				];
 					
 				//위의 배열을 이용해 라인 그리기
-                                var polyline = new naver.maps.Polyline({
+                                polyline = new naver.maps.Polyline({
                                     path: polylinePath,      //선 위치 변수배열
                                     strokeColor: '#FF0000', //선 색 빨강 #빨강,초록,파랑
                                     strokeOpacity: 0.5, //선 투명도 0 ~ 1
@@ -218,7 +219,7 @@ function changeUtmUnitNorth(coordinate) {
 
 
                                 // 배열 마지막 위치를 마크로 표시함
-                                var marker = new naver.maps.Marker({
+                                marker = new naver.maps.Marker({
                                     position: polylinePath[0], //마크 표시할 위치 배열의 마지막 위치
                                     map: map
                                 });
