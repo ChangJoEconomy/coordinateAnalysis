@@ -888,5 +888,6 @@ button,
 
 html, body {
   min-height: 100vh;
+  max-height: 1000px;
   overflow: auto;
 }
