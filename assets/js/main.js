@@ -200,13 +200,12 @@ function changeUtmUnitNorth(coordinate) {
 				let inputWsg = proj4(utm, wgs84, [changeUtmUnitEast(inputCo), changeUtmUnitNorth(inputCo)]);
 				let pivotWsg = proj4(utm, wgs84, [changeUtmUnitEast(pivotCo), changeUtmUnitNorth(pivotCo)]);
 				console.log(inputWsg);
-				console.log(pivotWsg);
 				
 				map.setCenter(new naver.maps.LatLng(inputWsg[1], inputWsg[0])); // 맵 중심은 입력좌표로
 				
 				var arrayOfCoords = [
                                     new naver.maps.LatLng(inputWsg[1], inputWsg[0]),
-                                    new naver.maps.LatLng(inputWsg[1], inputWsg[0])
+                                    new naver.maps.LatLng(pivotWsg[1], pivotWsg[0])
 				];
 					
 				//위의 배열을 이용해 라인 그리기
