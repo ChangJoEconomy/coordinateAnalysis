@@ -198,12 +198,28 @@ function changeUtmUnitNorth(coordinate) {
 				let errorValue = Math.round(Math.sqrt(tmpDx*tmpDx + tmpDy*tmpDy));
 				
 				let inputWsg = proj4(utm, wgs84, [changeUtmUnitEast(inputCo), changeUtmUnitNorth(inputCo)]);
+				let pivotWsg = proj4(utm, wgs84, [changeUtmUnitEast(pivotCo), changeUtmUnitNorth(pivotCo)]);
 				console.log(inputWsg);
 				
 				map.setCenter(new naver.maps.LatLng(inputWsg[1], inputWsg[0])); // 맵 중심은 입력좌표로
 				
-				var marker = new naver.maps.Marker({
-                                    position: new naver.maps.LatLng(inputWsg[1], inputWsg[0]),
+				let polylinePath = [
+                                    new naver.maps.LatLng(inputWsg[1], inputWsg[0]),
+                                    new naver.maps.LatLng(inputWsg[1], inputWsg[0])
+				];
+					
+				//위의 배열을 이용해 라인 그리기
+                                var polyline = new naver.maps.Polyline({
+                                    path: polylinePath,      //선 위치 변수배열
+                                    strokeColor: '#FF0000', //선 색 빨강 #빨강,초록,파랑
+                                    strokeOpacity: 0.8, //선 투명도 0 ~ 1
+                                    strokeWeight: 6,   //선 두께
+                                    map: map           //오버레이할 지도
+                                });
+
+                                // 배열 마지막 위치를 마크로 표시함
+                                var marker = new naver.maps.Marker({
+                                    position: polylinePath[polylinePath.length-1], //마크 표시할 위치 배열의 마지막 위치
                                     map: map
                                 });
 				
