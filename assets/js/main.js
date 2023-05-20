@@ -202,17 +202,9 @@ function changeUtmUnitNorth(coordinate) {
 				
 				map.setCenter(new naver.maps.LatLng(inputWsg[1], inputWsg[0])); // 맵 중심은 입력좌표로
 				
-				if(markerOn){
-					marker.setPosition(new naver.maps.LatLng(inputWsg[1], inputWsg[0]));
-                                        marker.setMap(map)
-				}
-				else {
-				    var marker = new naver.maps.Marker({
-                                        position: new naver.maps.LatLng(inputWsg[1], inputWsg[0]),
-                                        map: map
-                                    });
-				    markerOn = true;
-				}
+				Marker marker = new Marker();
+                                marker.setPosition(new LatLng(new naver.maps.LatLng(inputWsg[1], inputWsg[0])));
+                                marker.setMap(map);
 				
 				document.getElementById("outputValue").innerText = errorValue;
 				$message._show('success', '');
