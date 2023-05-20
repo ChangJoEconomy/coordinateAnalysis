@@ -7,6 +7,7 @@
 // UTM 좌표체계와 위도/경도 좌표체계 정의
 var utm = "+proj=utm +zone=52 +ellps=GRS80 +units=m +no_defs";
 var wgs84 = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs";
+let markerOn = false;
 
 
 // 기존 입력한 값 불러오기
@@ -199,7 +200,9 @@ function changeUtmUnitNorth(coordinate) {
 				let inputWsg = proj4(utm, wgs84, [changeUtmUnitEast(inputCo), changeUtmUnitNorth(inputCo)]);
 				console.log(inputWsg);
 				
-				map.setCenter(new naver.maps.LatLng(inputWsg[1], inputWsg[0]));
+				map.setCenter(new naver.maps.LatLng(inputWsg[1], inputWsg[0])); // 맵 중심은 입력좌표로
+				
+				
 				var marker = new naver.maps.Marker({
                                     position: new naver.maps.LatLng(inputWsg[1], inputWsg[0]),
                                     map: map
