@@ -203,7 +203,8 @@ function changeUtmUnitNorth(coordinate) {
                                     center: new naver.maps.LatLng(inputWsg[1], inputWsg[0]),
                                     zoom: 10
                                 });
-					
+				
+				map.setOptions("mapTypeControl", true); //지도 유형 컨트롤의 표시 여부
 				var marker = new naver.maps.Marker({
                                     position: new naver.maps.LatLng(inputWsg[1], inputWsg[0]),
                                     map: map
