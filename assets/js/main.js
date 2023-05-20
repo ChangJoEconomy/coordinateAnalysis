@@ -200,6 +200,7 @@ function changeUtmUnitNorth(coordinate) {
 				let inputWsg = proj4(utm, wgs84, [changeUtmUnitEast(inputCo), changeUtmUnitNorth(inputCo)]);
 				let pivotWsg = proj4(utm, wgs84, [changeUtmUnitEast(pivotCo), changeUtmUnitNorth(pivotCo)]);
 				console.log(inputWsg);
+				console.log(pivotWsg);
 				
 				map.setCenter(new naver.maps.LatLng(inputWsg[1], inputWsg[0])); // 맵 중심은 입력좌표로
 				
