@@ -7,7 +7,6 @@
 // UTM 좌표체계와 위도/경도 좌표체계 정의
 var utm = "+proj=utm +zone=52 +ellps=GRS80 +units=m +no_defs";
 var wgs84 = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs";
-let markerOn = false;
 
 
 // 기존 입력한 값 불러오기
@@ -203,15 +202,18 @@ function changeUtmUnitNorth(coordinate) {
 				
 				map.setCenter(new naver.maps.LatLng(inputWsg[1], inputWsg[0])); // 맵 중심은 입력좌표로
 				
-				var arrayOfCoords = [
+				var polylinePath = [
                                     new naver.maps.LatLng(inputWsg[1], inputWsg[0]),
                                     new naver.maps.LatLng(pivotWsg[1], pivotWsg[0])
 				];
 					
 				//위의 배열을 이용해 라인 그리기
-                                var polyline = new naver.maps.Polyline({  
-                                    path: arrayOfCoords,
-                                    map: map
+                                var polyline = new naver.maps.Polyline({
+                                    path: polylinePath,      //선 위치 변수배열
+                                    strokeColor: '#FF0000', //선 색 빨강 #빨강,초록,파랑
+                                    strokeOpacity: 0.8, //선 투명도 0 ~ 1
+                                    strokeWeight: 6,   //선 두께
+                                    map: map           //오버레이할 지도
                                 });
 
 
