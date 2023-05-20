@@ -49,8 +49,10 @@
                     var mapOptions = {
                         center: new naver.maps.LatLng(37.3595704, 127.105399),
                         zoom: 10
+			
                     };
                      var map = new naver.maps.Map('map', mapOptions);
+			map.setOptions("mapTypeControl", true); //지도 유형 컨트롤의 표시 여부
                 </script>
 			<script src="assets/js/main.js"></script>
 
