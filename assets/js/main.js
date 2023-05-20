@@ -8,8 +8,6 @@
 var utm = "+proj=utm +zone=52 +ellps=GRS80 +units=m +no_defs";
 var wgs84 = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs";
 
-console.log(proj4(utm, wgs84, [412345, 4267890]));
-
 
 // 기존 입력한 값 불러오기
 if(!!window.openDatabase) {
@@ -197,14 +195,17 @@ function changeUtmUnitNorth(coordinate) {
 				let tmpDx = changeUtmUnitEast(pivotCo) - changeUtmUnitEast(inputCo);
 				let tmpDy = changeUtmUnitNorth(pivotCo) - changeUtmUnitNorth(inputCo);
 				let errorValue = Math.round(Math.sqrt(tmpDx*tmpDx + tmpDy*tmpDy));
-								
+				
+				inputWsg = proj4(utm, wgs84, [changeUtmUnitEast(inputCo), changeUtmUnitNorth(inputCo)]);
+				console.log(inputWsg);
+				
 				var map = new naver.maps.Map('map', {
-                                    center: new naver.maps.LatLng(37.3595704, 127.105399),
+                                    center: new naver.maps.LatLng(inputWsg[1], inputWsg[0]),
                                     zoom: 10
                                 });
 					
 				var marker = new naver.maps.Marker({
-                                    position: new naver.maps.LatLng(37.3595704, 127.105399),
+                                    position: new naver.maps.LatLng(inputWsg[1], inputWsg[0]),
                                     map: map
                                 });
 				
