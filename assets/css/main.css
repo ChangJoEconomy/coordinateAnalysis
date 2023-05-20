@@ -887,7 +887,6 @@ button,
       position: relative; } }
 
 html, body {
-  min-height: 100vh;
-  max-height: 1000px;
+  max-height: 2000px;
   overflow: auto;
 }
