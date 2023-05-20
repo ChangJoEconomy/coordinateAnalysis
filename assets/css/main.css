@@ -885,3 +885,8 @@ button,
       left: auto;
       margin: 1em 0 0 0;
       position: relative; } }
+
+html, body {
+  min-height: 100vh;
+  overflow: auto;
+}
