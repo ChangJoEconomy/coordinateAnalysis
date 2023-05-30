@@ -169,7 +169,6 @@ function changeUtmUnitNorth(coordinate) {
 				};
 
 				document.getElementById("gogo").onclick = function () {
-					document.getElementById('expl').style.visibility = "none";
 					if(markerOn) {
 						marker.setMap(null); // 삭제
 						polyline.setMap(null); //폴리라인 지우기
